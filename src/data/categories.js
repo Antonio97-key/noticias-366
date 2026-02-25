@@ -17,7 +17,9 @@ export const CATEGORIES = [
             'política', 'gobierno', 'presidente', 'congreso', 'senado', 'diputados',
             'elecciones', 'ley', 'reforma', 'crisis', 'manifestación', 'protesta',
             'accidente', 'tragedia', 'internacional', 'mundo', 'exterior',
-            'última hora', 'breaking', 'emergencia', 'conflicto'
+            'última hora', 'breaking', 'emergencia', 'conflicto',
+            'republica dominicana', 'santo domingo', 'nacional', 'dn', 'interior',
+            'policia nacional', 'ejercito', 'seguridad ciudadana'
         ],
     },
     {
@@ -131,7 +133,8 @@ export const CATEGORIES = [
             'política', 'partido', 'elecciones', 'candidato', 'votación', 'parlamento',
             'congreso', 'senado', 'diputados', 'presidente', 'primer ministro', 'gobierno',
             'oposición', 'coalición', 'democracia', 'campaña', 'ideología', 'izquierda',
-            'derecha', 'centro', 'referéndum', 'moción', 'investidura', 'gabinete'
+            'derecha', 'centro', 'referéndum', 'moción', 'investidura', 'gabinete',
+            'abinader', 'danilo', 'leonel', 'prm', 'pld', 'fp', 'jce', 'tse'
         ],
     },
 ];

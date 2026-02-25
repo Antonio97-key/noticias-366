@@ -6,9 +6,14 @@
 import { classifyText } from '../utils/classifier.js';
 
 const RSS_SOURCES = [
+    // --- Internacionales ---
     { name: 'BBC Mundo', url: 'https://feeds.bbci.co.uk/mundo/rss.xml' },
     { name: 'El País', url: 'https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada' },
-    { name: 'El Mundo', url: 'https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml' }
+    { name: 'El Mundo', url: 'https://e00-elmundo.uecdn.es/elmundo/rss/portada.xml' },
+    // --- Locales (República Dominicana) ---
+    { name: 'Diario Libre', url: 'https://www.diariolibre.com/rss/portada.xml' },
+    { name: 'Remolacha.net', url: 'http://feeds.feedburner.com/remolacha/GcnR' },
+    { name: 'De Último Minuto', url: 'https://deultimominuto.net/feed/' }
 ];
 
 const PROXY_URL = 'https://api.rss2json.com/v1/api.json?rss_url=';

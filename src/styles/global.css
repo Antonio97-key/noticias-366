@@ -1,0 +1,168 @@
+/* ===========================
+   GLOBAL.CSS - Estilos Base
+   Noticias 366
+   =========================== */
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+}
+
+::selection {
+    background: var(--color-accent);
+    color: white;
+}
+
+/* ─── CONTENEDOR ─────────────────────────── */
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--space-4);
+    }
+}
+
+/* ─── SCROLLBAR PERSONALIZADO ────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+/* ─── TIPOGRAFÍA GLOBAL ───────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-serif);
+    line-height: 1.2;
+    color: var(--color-text-primary);
+}
+
+p {
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+}
+
+/* ─── UTILIDADES ─────────────────────────── */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.text-accent {
+    color: var(--color-accent);
+}
+
+/* ─── ANIMACIONES GLOBALES ───────────────── */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 var(--color-accent-glow);
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px transparent;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn var(--transition-slow) both;
+}
+
+/* ─── DIVIDER ─────────────────────────────── */
+.divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: var(--space-8) 0;
+}
+
+/* ─── SKELETON LOADING ────────────────────── */
+@keyframes shimmer {
+    0% {
+        background-position: -400px 0;
+    }
+
+    100% {
+        background-position: 400px 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg,
+            var(--color-bg-surface) 25%,
+            var(--color-bg-elevated) 50%,
+            var(--color-bg-surface) 75%);
+    background-size: 400px 100%;
+    animation: shimmer 1.4s ease infinite;
+    border-radius: var(--radius-sm);
+}
+
+/* ─── FRONT PAGE & ERROR ──────────────────── */
+.front-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+}
+
+.error-msg {
+    padding: var(--space-8);
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    border-radius: var(--radius-md);
+    margin: var(--space-8) 0;
+    text-align: center;
+    font-weight: 500;
+}

@@ -10,7 +10,7 @@ import './Header.css';
  * @param {{ onCategorySelect: Function, onSearch: Function }} props
  * @returns {HTMLElement}
  */
-export const createHeader = ({ onCategorySelect, onSearch }) => {
+export const createHeader = ({ onCategorySelect, onSearch, onLangChange }) => {
   const header = document.createElement('header');
   header.className = 'header';
   header.id = 'main-header';
@@ -19,7 +19,15 @@ export const createHeader = ({ onCategorySelect, onSearch }) => {
     <div class="header__top">
       <div class="container header__top-inner">
         <div class="header__date" id="header-date"></div>
-        <div class="header__tagline">Tu portal de información de confianza</div>
+        <div class="header__lang-selector">
+          <select id="lang-select" class="header__lang-dropdown" aria-label="Cambiar idioma">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="zh">Mandarin</option>
+            <option value="hi">Hindi</option>
+            <option value="ar">Arabic</option>
+          </select>
+        </div>
         <div class="header__meta">
           <div class="header__clock" id="header-clock">00:00:00</div>
           <span class="header__edition">Edición Digital</span>
@@ -30,7 +38,7 @@ export const createHeader = ({ onCategorySelect, onSearch }) => {
     <div class="header__brand">
       <div class="container header__brand-inner">
         <a href="#" class="header__logo" id="logo-home" aria-label="Noticias 366 - Inicio">
-          <span class="header__logo-n">N</span>OTICIAS
+          <span class="header__logo-text">N<img src="/logo.png" alt="" class="header__logo-icon" />TICIAS</span>
           <span class="header__logo-number">366</span>
         </a>
 
@@ -109,6 +117,11 @@ export const createHeader = ({ onCategorySelect, onSearch }) => {
   header.querySelector('#search-form').addEventListener('submit', (e) => {
     e.preventDefault();
     onSearch(searchInput.value.trim());
+  });
+
+  /* ─── Idioma ─── */
+  header.querySelector('#lang-select').addEventListener('change', (e) => {
+    onLangChange(e.target.value);
   });
 
   /* ─── Sticky scroll shadow ─── */

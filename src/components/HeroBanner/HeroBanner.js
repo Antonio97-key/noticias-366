@@ -22,30 +22,28 @@ export const createHeroBanner = (article, onArticleClick) => {
   hero.setAttribute('aria-label', 'Noticia destacada');
 
   hero.innerHTML = `
-    <div
-      class="hero__bg"
-      style="background-image: url('${article.imageUrl}')"
-      role="img"
-      aria-label="${article.title}"
-    ></div>
-    <div class="hero__gradient"></div>
-
-    <div class="container hero__content">
-      <div class="hero__meta"></div>
-      <h1 class="hero__title">${article.title}</h1>
-      <p class="hero__excerpt">${article.excerpt}</p>
-      <div class="hero__footer">
-        <div class="hero__author-info">
-          <span class="hero__author">${article.author}</span>
-          <span class="hero__time">${formatRelativeTime(article.publishedAt)}</span>
-          <span class="hero__read-time">· ${article.readTime} min de lectura</span>
+    <div class="hero__card">
+      <div class="hero__image-wrapper">
+        <img src="${article.imageUrl}" alt="${article.title}" class="hero__image" />
+        <div class="hero__image-badge">Noticia Destacada</div>
+      </div>
+      <div class="hero__content">
+        <div class="hero__meta"></div>
+        <h1 class="hero__title">${article.title}</h1>
+        <p class="hero__excerpt">${article.excerpt}</p>
+        <div class="hero__footer">
+          <div class="hero__author-info">
+            <span class="hero__author">${article.author}</span>
+            <span class="hero__time">${formatRelativeTime(article.publishedAt)}</span>
+            <span class="hero__read-time">· ${article.readTime} min de lectura</span>
+          </div>
+          <button class="hero__cta" aria-label="Leer artículo completo">
+            Leer artículo completo
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
         </div>
-        <button class="hero__cta" aria-label="Leer artículo completo">
-          Leer artículo
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
       </div>
     </div>
   `;

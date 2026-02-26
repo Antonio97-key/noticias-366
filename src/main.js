@@ -29,10 +29,11 @@ import { fetchLiveNews } from './services/newsFetcher.js';
 
 /* ─── Estado global (inmutable por defecto) ─── */
 const state = {
-    activeCategory: 'actualidad', // Categoría por defecto al cargar (según feedback del usuario)
+    activeCategory: 'actualidad',
     searchQuery: '',
     allArticles: [...NEWS_DATA],
     isLoading: true,
+    lang: 'es',
 };
 
 /* ─── Referencias al DOM ─── */
@@ -51,12 +52,20 @@ const getFilteredNews = () => {
             (n.tags && n.tags.some(t => t.toLowerCase().includes(q)))
         );
     }
-    return base.filter(n => n.categoryId === state.activeCategory);
+    // Si no hay búsqueda, filtramos por categoría
+    // Pero excluimos la noticia destacada que se muestra arriba si estamos en la vista de categoría
+    const news = base.filter(n => n.categoryId === state.activeCategory);
+    if (!state.searchQuery) {
+        const featured = news.find(n => n.isFeatured) || news[0];
+        return news.filter(n => n.id !== featured?.id);
+    }
+    return news;
 };
 
 const getCategoryLabel = () => {
     if (state.searchQuery) return `Resultados para "${state.searchQuery}"`;
-    return getCategoryById(state.activeCategory)?.label ?? '';
+    const cat = getCategoryById(state.activeCategory);
+    return cat ? cat.label : 'Noticias';
 };
 
 /* ─── Renderizador ─── */
@@ -131,6 +140,19 @@ const handleCategorySelect = (categoryId) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
+const handleLangChange = (lang) => {
+    state.lang = lang;
+    console.log(`Cambiando idioma a: ${lang}`);
+    // Aquí se podría integrar una API de traducción o recargar datos
+    // Por ahora simulamos una actualización visual
+    state.isLoading = true;
+    renderMainContent();
+    setTimeout(() => {
+        state.isLoading = false;
+        renderMainContent();
+    }, 500);
+};
+
 const handleSearch = (query) => {
     state.searchQuery = query;
     // Buscamos en todas las categorías pero mantenemos la UI consistente
@@ -161,6 +183,7 @@ const init = async () => {
         createHeader({
             onCategorySelect: handleCategorySelect,
             onSearch: handleSearch,
+            onLangChange: handleLangChange,
         })
     );
 

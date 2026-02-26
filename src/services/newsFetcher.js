@@ -50,7 +50,7 @@ export const fetchLiveNews = async () => {
                 body: item.content || item.description || '',
                 author: item.author || 'Agencia',
                 publishedAt: item.pubDate || new Date().toISOString(),
-                imageUrl: item.enclosure?.link || item.thumbnail || `https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80`,
+                imageUrl: item.enclosure?.link || item.thumbnail || `https://images.unsplash.com/photo-${['1504711434969-e33886168f5c', '1495020689067-958852abab44', '1523994590528-564d0f079965', '1504467957764-b3e66c1d2f97'][index % 4]}?w=800&q=80`,
                 readTime: Math.max(2, Math.floor((item.content?.length || 500) / 1000)),
                 isFeatured: false,
                 tags: [categoryId, 'tiempo-real']
